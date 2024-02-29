@@ -1,4 +1,5 @@
 from TicTacToeBorder import create_bord, check_turn, check_win
+from TicTacToeAI import midMax
 import os
 setup = {1 : '·', 2 : '·', 3 : '·', 4 : '·', 5 : '·', 6 : '·', 7 : '·', 8 : '·', 9 : '·'}
 #class TicTacToeBord():
@@ -8,11 +9,20 @@ playing  = True
 turn = 0 
 prev_turn = -1
 complete  = False
+oneOrTwo = True
+
+print('One or Two Players: ')
+a = input()
+if (a == '1'):
+    aiPlayer = False
+elif (a == '2'):
+    aiPlayer = True
 
 while playing:
     #Below is Clear operator
     os.system('cls' if os.name== 'nt' else 'clear')
     create_bord(setup)
+
     if prev_turn == turn:
         print('Invalid spot selected!')
     prev_turn = turn
@@ -26,14 +36,21 @@ while playing:
         if not setup[int(choice)] in {'X', 'O'}:
             turn += 1
             setup[int(choice)] = check_turn(turn)
+            input()
     #Check if P1 or P2 has won
     print('Near check win')
     if check_win(setup):
         playing, complete = False, True
+    #If AI is Second player
+    if aiPlayer is False and turn % 2 != 0:    
+        turn += 1
+        setup[midMax(setup)] = check_turn(turn)
     #Checks if P1 or P2 has Draw
     print('Near turn greater then 8')
     if turn > 8:
         playing = False
+    
+
 
 os.system('cls' if os.name== 'nt' else 'clear')
 create_bord(setup)
