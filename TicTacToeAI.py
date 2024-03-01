@@ -1,8 +1,9 @@
 import random
-numX = 1
+numX = 0
 numO = 0
 #update numX for new turns
-def midMax(setup):
+def midMax(setup, num):
+    numX = num - 1
     if numX == 1:
         return oneX(setup)
     elif numX == 2:
@@ -20,4 +21,7 @@ def oneX(setup):
         return oneX(setup)
     else:
         return num
+
+def twoX(setup):
+    return
     
