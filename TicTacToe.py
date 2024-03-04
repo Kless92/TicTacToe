@@ -39,7 +39,7 @@ while playing:
     #If AI is Second player
     if aiPlayer is False and turn % 2 != 0:    
         turn += 1
-        setup[midMax(setup, turn)] = check_turn(turn)
+        setup[midMax(setup)] = check_turn(turn)
         os.system('cls' if os.name== 'nt' else 'clear')
         create_bord(setup)
         input()

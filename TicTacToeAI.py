@@ -1,19 +1,17 @@
 import random
-numX = 0
-numO = 0
+
 #update numX for new turns
-def midMax(setup, num):
-    numX = num - 1
-    if numX == 1:
+def midMax(setup):
+    numX = []
+    a = list(setup.keys())
+    for x in setup:
+        if setup[x] == 'X':
+            numX.append(a[x-1])
+            print(numX)
+    if len(numX) == 1:
         return oneX(setup)
-    #elif numX == 2:
-       # return twoX(setup)
-    #elif numX == 3:
-       # print('Place Holder')
-    #elif numX == 4:
-       # print('Place Holder')
     else:
-        return twoX(setup)
+        return findTwoXs(setup)
 
 def oneX(setup):
     num = random.randint(1, 9)
@@ -22,9 +20,11 @@ def oneX(setup):
     else:
         return num
 
-def twoX(setup):
+def findTwoXs(setup):
     if (setup[1] == 'X' and setup[2] == 'X'):
         return 3
-    else:
-        return 0
+    elif(setup[1] == 'X' and setup[3] == 'X'):
+        return 2
+    elif(setup[2] == 'X' and setup[3] == 'X'):
+        return 1
     
