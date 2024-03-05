@@ -1,14 +1,14 @@
 import random
 
-combList= [[2, 3, 4, 5, 6],
+combList= [[2, 3, 4, 7, 5, 9],
            [1, 3, 5, 8],
-           [1, 2, 5, 6, 7, 9],
-           [1, 5, 6, 7],
-           [1, 2, 3, 4, 5, 6, 7, 8, 9],
-           [3, 4, 5, 9],
-           [1, 3, 4, 5, 8, 9],
-           [2, 5, 7, 9],
-           [1, 3, 5, 6, 7, 8]]
+           [1, 2, 5, 7, 6, 9],
+           [1, 7, 5, 6],
+           [1, 9, 2, 8, 3, 7, 4, 6],
+           [3, 9, 4, 5],
+           [1, 4, 5, 3, 8, 9],
+           [7, 9, 2, 5],
+           [3, 6, 1, 5, 7, 8]]
 #update numX for new turns
 def midMax(setup):
     numX = []
@@ -45,12 +45,16 @@ def findXTwins(setup, xList, oList):
         print(x)
         if x in xList:
             print(combList[x-1])
-            test = len(combList[x-1])
-            print('aaa')
+            print(x)
             input()
             for y in (combList[x-1]):
                 print(y)
-                print('bbb')
+                if setup[y] == 'X':
+                    print(True)
+                    
+                    #return y+1
+                else:
+                    print(False)
             input()    
         else:
             print(False)
