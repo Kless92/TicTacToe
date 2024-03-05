@@ -44,7 +44,14 @@ def findXTwins(setup, xList, oList):
     for x in range(10):
         print(x)
         if x in xList:
-            print(True)
+            print(combList[x-1])
+            test = len(combList[x-1])
+            print('aaa')
+            input()
+            for y in (combList[x-1]):
+                print(y)
+                print('bbb')
+            input()    
         else:
             print(False)
     input()
