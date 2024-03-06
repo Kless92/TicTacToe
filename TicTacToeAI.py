@@ -38,20 +38,34 @@ def oneX(setup):
         return num
 
 def findXTwins(setup, xList, oList):
+    print('xlist: ')
     print(len(xList))
+    print('olist: ')
     print(len(oList))
     input()
     for x in range(10):
         print(x)
         if x in xList:
             print(combList[x-1])
-            print(x)
             input()
             for y in (combList[x-1]):
                 print(y)
+                print(x)
                 if setup[y] == 'X':
                     print(True)
-                    
+                    #if x > y:
+                    print(combList[y-1])
+                    print(combList[y-1][x])
+                    input()
+                    return combList[y-1][x]
+                    #elif x < y:
+                        #print(y-1)
+                        #input()
+                        #return y-1
+                        #break
+                    #else:
+                        #print('Error')
+                        #input()
                     #return y+1
                 else:
                     print(False)
