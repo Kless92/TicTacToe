@@ -40,6 +40,11 @@ while playing:
     print('Near check win')
     if check_win(setup):
         playing, complete = False, True
+    #Checks if P1 or P2 has Draw
+    print('Near turn greater then 8')
+    if turn > 8:
+        playing = False
+        break
     #If AI is Second player
     if aiPlayer is False and turn % 2 != 0:    
         turn += 1
@@ -47,10 +52,7 @@ while playing:
         os.system('cls' if os.name== 'nt' else 'clear')
         create_bord(setup)
         input()
-    #Checks if P1 or P2 has Draw
-    print('Near turn greater then 8')
-    if turn > 8:
-        playing = False
+
 
 os.system('cls' if os.name== 'nt' else 'clear')
 create_bord(setup)

@@ -29,9 +29,11 @@ def midMax(setup):
 
 def oneX(setup):
     num = random.randint(1, 9)
+    #if the cent of the bord is empty, the AI will take it
     if (setup[5] != 'X' and setup[5] != 'O'):
         return 5
-    elif (setup[num] == 'X'):
+    #If any of the spots is taken it will call itself
+    elif (setup[num] == 'X' or setup[num] == 'O'):
         return oneX(setup)
     else:
         return num
@@ -50,12 +52,15 @@ def findXWins(setup, xList, oList):
                 xFound += 1
                 if xFound == 2:
                     for z in x:
-                        print(z)
-                        if setup[z] != 'X':
+                        #print(z)
+                        #input()
+                        if setup[z] != 'X' and setup[z] != 'O':
                             return z
-                    input()
+                    #input()
             else:
                 print(False)
-    input()
+    #If the AI player 'can't' find a spot X could win; it will then all oneX()
+    return oneX(setup)
+    #input()
 
     
