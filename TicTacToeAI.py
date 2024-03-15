@@ -17,15 +17,15 @@ def midMax(setup):
         #All all dect value that has X to numX
         if setup[x] == 'X':
             numX.append(a[x-1])
-            print(numX)
+            #print(numX)
         #All all dect value that has O to numO
         elif setup[x] == 'O':
             numO.append(a[x-1])
-            print(numO)
+            #print(numO)
     if len(numX) == 1:
         return oneX(setup)
     else:
-        return findXWins(setup, numX, numO)
+        return findOWins(setup, numX, numO)
 
 def oneX(setup):
     num = random.randint(1, 9)
@@ -37,18 +37,18 @@ def oneX(setup):
         return oneX(setup)
     else:
         return num
-
+#This functions checks if Player One can win Next turn.
 def findXWins(setup, xList, oList):
-    print('xlist: ')
-    print(len(xList))
-    print('olist: ')
-    print(len(oList))
-    input()
+    #print('xlist: ')
+    #print(len(xList))
+    #print('olist: ')
+   # print(len(oList))
+    #input()
     for x in combList:
         xFound = 0
         for y in x:
             if y in xList:
-                print(True)
+                #print(True)
                 xFound += 1
                 if xFound == 2:
                     for z in x:
@@ -62,5 +62,28 @@ def findXWins(setup, xList, oList):
     #If the AI player 'can't' find a spot X could win; it will then all oneX()
     return oneX(setup)
     #input()
-
-    
+#This functions checks if teh AI player can win this turn.
+def findOWins(setup, xList, oList):
+    #print('xlist: ')
+    #print(len(xList))
+    #print('olist: ')
+    #print(len(oList))
+    #input()
+    for x in combList:
+        oFound = 0
+        for y in x:
+            if y in oList:
+                #print(True)
+                oFound += 1
+                if oFound == 2:
+                    for z in x:
+                        #print(z)
+                        #input()
+                        if setup[z] != 'X' and setup[z] != 'O':
+                            return z
+                    #input()
+            #else:
+                #print(False)
+    #If the AI player 'can't' find a spot X could win; it will then all oneX()
+    return findXWins(setup, xList, oList)
+    #input()

@@ -1,7 +1,7 @@
 from TicTacToeBorder import create_bord, check_turn, check_win
 from TicTacToeAI import midMax
 import os
-setup = {1 : '·', 2 : '·', 3 : '·', 4 : '·', 5 : '·', 6 : '·', 7 : '·', 8 : '·', 9 : '·'}
+setup = {1 : '1', 2 : '2', 3 : '3', 4 : '4', 5 : '5', 6 : '6', 7 : '7', 8 : '8', 9 : '9'}
 #class TicTacToeBord():
 
 
@@ -11,12 +11,18 @@ prev_turn = -1
 complete  = False
 oneOrTwo = True
 
-print('One or Two Players: ')
-a = input()
-if (a == '1'):
-    aiPlayer = False
-elif (a == '2'):
-    aiPlayer = True
+while True:
+    print('Type "1" for Player vs AI or "2" for Players vs Player: ')
+    a = input()
+    if (a == '1'):
+        aiPlayer = False
+        break
+    elif (a == '2'):
+        aiPlayer = True
+        break
+    else:
+        print('Not a valid input!')
+        input()
 
 while playing:
     #Below is Clear operator
@@ -52,6 +58,10 @@ while playing:
         os.system('cls' if os.name== 'nt' else 'clear')
         create_bord(setup)
         input()
+        #Check if the AI has won this game.
+        print('Near check win')
+        if check_win(setup):
+         playing, complete = False, True
 
 
 os.system('cls' if os.name== 'nt' else 'clear')
